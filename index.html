@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAGA — Opera en los Mercados que Mueven el Mundo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#E8221A;--red-dark:#B8180F;--red-glow:rgba(232,34,26,0.1);
+  --black:#080808;--surface:#0F0F0F;--surface2:#161616;--surface3:#1E1E1E;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--border-hot:rgba(232,34,26,0.28);
+  --text:#EFEFE8;--muted:rgba(239,239,232,0.48);--dim:rgba(239,239,232,0.26);
+  --green:#22C55E;--green-bg:rgba(34,197,94,0.08);--green-border:rgba(34,197,94,0.18);
+  --red-bg:rgba(232,34,26,0.08);
+  --font-d:'Bebas Neue',sans-serif;--font-b:'Inter',sans-serif;--font-m:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(8,8,8,0.88);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.nav-logo img{height:32px;width:auto;display:block}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.2px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--red);color:#fff;border:none;padding:10px 24px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;letter-spacing:0.3px}
+.nav-cta:hover{background:var(--red-dark);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 440px;padding-top:66px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 55% 60% at 18% 55%,rgba(232,34,26,0.055) 0%,transparent 65%);pointer-events:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 5vw 80px;z-index:1}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:10px;letter-spacing:3.5px;color:var(--red);text-transform:uppercase;margin-bottom:26px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--red)}
+h1.hero-title{font-family:var(--font-d);font-size:clamp(58px,7.5vw,104px);line-height:.92;letter-spacing:.3px;margin-bottom:26px}
+h1.hero-title .acc{color:var(--red)}
+.hero-sub{font-size:17px;color:var(--muted);max-width:500px;margin-bottom:44px;line-height:1.75;font-weight:300}
+.trust-bar{display:flex;gap:22px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--dim);font-family:var(--font-m);letter-spacing:.3px}
+.trust-item svg{flex-shrink:0;opacity:.7}
+
+/* FORM */
+.hero-right{background:var(--surface);border-left:0.5px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:56px 44px;z-index:1}
+.form-head{font-family:var(--font-d);font-size:30px;letter-spacing:.5px;margin-bottom:4px}
+.form-sub-text{font-size:12.5px;color:var(--muted);margin-bottom:28px;font-weight:300}
+.fg{margin-bottom:12px}
+.fg label{display:block;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;font-family:var(--font-m)}
+.fg input,.fg select{width:100%;background:var(--surface2);border:0.5px solid var(--border2);color:var(--text);font-family:var(--font-b);font-size:14px;padding:11px 14px;border-radius:7px;outline:none;transition:border-color .2s,background .2s;appearance:none}
+.fg input::placeholder{color:var(--dim)}
+.fg input:focus,.fg select:focus{border-color:var(--red);background:var(--surface3)}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='rgba(239,239,232,.3)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;cursor:pointer}
+.fg select option{background:#1E1E1E;color:var(--text)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:14px;font-family:var(--font-b);font-size:14px;font-weight:700;border-radius:7px;cursor:pointer;letter-spacing:.4px;margin-top:6px;transition:background .2s,transform .15s}
+.btn-submit:hover{background:var(--red-dark);transform:translateY(-1px)}
+.form-legal{font-size:10px;color:var(--dim);margin-top:12px;line-height:1.6;font-family:var(--font-m);text-align:center}
+.form-success{display:none;text-align:center;padding:48px 0}
+.check-wrap{width:54px;height:54px;background:var(--green-bg);border:0.5px solid var(--green-border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.form-success h3{font-family:var(--font-d);font-size:26px;margin-bottom:10px}
+.form-success p{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* TICKER */
+.marquee-wrap{overflow:hidden;background:var(--surface);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:11px 0}
+.marquee-track{display:flex;gap:52px;width:max-content;animation:marquee 36s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.m-item{display:flex;align-items:center;gap:9px;font-family:var(--font-m);font-size:12px;white-space:nowrap;flex-shrink:0}
+.m-sym{color:var(--text);font-weight:500;letter-spacing:1px}
+.m-price{color:var(--muted)}
+.m-up{color:var(--green)}
+.m-dn{color:#EF4444}
+.m-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.15)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.section{padding:88px 5vw}
+.sec-label{font-family:var(--font-m);font-size:10px;letter-spacing:3.5px;color:var(--red);text-transform:uppercase;margin-bottom:12px}
+h2.sec-title{font-family:var(--font-d);font-size:clamp(38px,5vw,66px);line-height:.95;letter-spacing:.3px;margin-bottom:44px}
+
+/* INSTRUMENTS */
+.instr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:14px;overflow:hidden}
+.instr-card{background:var(--surface);padding:28px 22px 24px;text-align:center;position:relative;cursor:default;transition:background .2s}
+.instr-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.instr-card:hover{background:var(--surface2)}
+.instr-card:hover::after{transform:scaleX(1)}
+.instr-logo{width:50px;height:50px;border-radius:12px;margin:0 auto 13px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.instr-logo img{width:50px;height:50px;object-fit:cover;border-radius:12px}
+.instr-name{font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:2px}
+.instr-ticker{font-family:var(--font-m);font-size:10px;color:var(--dim);letter-spacing:1.5px;margin-bottom:10px}
+.instr-price{font-family:var(--font-m);font-size:14px;color:var(--text);font-weight:500;margin-bottom:4px}
+.instr-chg{font-family:var(--font-m);font-size:10px;padding:3px 8px;border-radius:4px;display:inline-block}
+.up{color:var(--green);background:var(--green-bg);border:0.5px solid var(--green-border)}
+.dn{color:#EF4444;background:rgba(239,68,68,.08);border:0.5px solid rgba(239,68,68,.18)}
+
+/* PRICE WIDGET */
+.price-live-note{font-size:11px;color:var(--dim);font-family:var(--font-m);letter-spacing:.5px;margin-bottom:32px;display:flex;align-items:center;gap:8px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* SIMULATION */
+.sim-section{padding:88px 5vw;background:var(--surface)}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:0.5px solid var(--border);border-radius:14px;overflow:hidden}
+.sim-card{background:var(--surface);padding:32px 28px;position:relative;overflow:hidden;transition:background .2s}
+.sim-card:hover{background:var(--surface2)}
+.sim-stock-name{font-size:12px;color:var(--dim);font-family:var(--font-m);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.sim-headline{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5;font-weight:300}
+.sim-invested{font-family:var(--font-m);font-size:11px;color:var(--dim);margin-bottom:6px}
+.sim-result{font-family:var(--font-d);font-size:42px;color:var(--green);line-height:1;letter-spacing:.5px}
+.sim-pct{font-family:var(--font-m);font-size:11px;color:var(--green);margin-top:6px;background:var(--green-bg);border:0.5px solid var(--green-border);padding:3px 9px;border-radius:4px;display:inline-block}
+.sim-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--green);opacity:.3}
+.sim-bar-fill{height:100%;background:var(--green);transition:width 1.5s ease}
+.sim-cta{text-align:center;padding:40px 0 0}
+.sim-cta p{font-size:13px;color:var(--muted);margin-bottom:20px;font-weight:300}
+.sim-note{font-size:10px;color:var(--dim);font-family:var(--font-m);margin-top:12px;letter-spacing:.3px}
+
+/* STATS */
+.stats-bar{background:var(--surface2);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{padding:34px 0;text-align:center;border-right:0.5px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--font-d);font-size:50px;line-height:1;color:var(--text)}
+.stat-num em{color:var(--red);font-style:normal}
+.stat-lbl{font-size:10.5px;color:var(--dim);margin-top:5px;font-family:var(--font-m);letter-spacing:1.5px;text-transform:uppercase}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:14px;overflow:hidden}
+.feat-item{background:var(--surface);padding:34px 30px;transition:background .2s}
+.feat-item:hover{background:var(--surface2)}
+.feat-icon{width:42px;height:42px;background:var(--red-glow);border:0.5px solid var(--border-hot);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feat-title{font-weight:600;font-size:14px;margin-bottom:8px;color:var(--text)}
+.feat-desc{font-size:13px;color:var(--muted);line-height:1.65;font-weight:300}
+
+/* STEPS */
+.steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:14px;overflow:hidden}
+.step-card{background:var(--surface);padding:44px 38px}
+.step-num{font-family:var(--font-d);font-size:80px;color:var(--red);opacity:.22;line-height:1;margin-bottom:18px}
+.step-title{font-weight:600;font-size:15px;margin-bottom:8px;color:var(--text)}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* NEWS */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.news-card{background:var(--surface);border:0.5px solid var(--border);border-radius:11px;padding:24px;transition:border-color .2s,background .2s;cursor:default}
+.news-card:hover{background:var(--surface2);border-color:var(--border2)}
+.news-tag{font-family:var(--font-m);font-size:9.5px;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.news-title{font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.45;letter-spacing:-.1px}
+.news-excerpt{font-size:12.5px;color:var(--muted);line-height:1.6;font-weight:300;margin-bottom:14px}
+.news-meta{font-size:10.5px;color:var(--dim);font-family:var(--font-m);display:flex;justify-content:space-between;align-items:center}
+.news-source{color:var(--red);font-size:10px}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.testi-card{background:var(--surface);border:0.5px solid var(--border);border-radius:11px;padding:28px 24px;transition:background .2s}
+.testi-card:hover{background:var(--surface2)}
+.stars{display:flex;gap:3px;margin-bottom:14px}
+.star{width:13px;height:13px;color:var(--red)}
+.testi-text{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--surface3);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:16px;color:var(--red);flex-shrink:0}
+.testi-name{font-size:13px;font-weight:600;color:var(--text)}
+.testi-loc{font-size:11px;color:var(--dim);font-family:var(--font-m)}
+
+/* FAQ */
+.faq-list{max-width:820px;margin:0 auto}
+.faq-item{border-bottom:0.5px solid var(--border);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;user-select:none;transition:color .2s}
+.faq-q:hover{color:var(--red)}
+.faq-q-text{font-size:15px;font-weight:500;letter-spacing:-.1px}
+.faq-icon{width:20px;height:20px;flex-shrink:0;transition:transform .3s}
+.faq-icon.open{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+.faq-a.open{max-height:200px;padding-bottom:20px}
+.faq-a p{font-size:13.5px;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* CTA BOTTOM */
+.cta-bottom{padding:110px 5vw;text-align:center;position:relative;overflow:hidden}
+.cta-bottom::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(232,34,26,.065) 0%,transparent 65%);pointer-events:none}
+.cta-bottom h2{margin-bottom:16px}
+.cta-sub{font-size:16px;color:var(--muted);max-width:420px;margin:0 auto 44px;font-weight:300;line-height:1.7}
+.btn-lg{display:inline-block;background:var(--red);color:#fff;border:none;padding:17px 52px;font-size:15px;font-weight:700;border-radius:8px;cursor:pointer;text-decoration:none;letter-spacing:.4px;transition:background .2s,transform .15s}
+.btn-lg:hover{background:var(--red-dark);transform:translateY(-2px)}
+
+/* DISCLAIMER & FOOTER */
+.disclaimer{background:var(--surface);border-top:0.5px solid var(--border);padding:26px 5vw}
+.disclaimer p{font-size:10.5px;color:var(--dim);max-width:980px;line-height:1.8;font-family:var(--font-m)}
+footer{background:var(--surface);border-top:0.5px solid var(--border);padding:52px 5vw 28px}
+.foot-top{display:grid;grid-template-columns:280px 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-brand img{height:44px;width:auto;display:block;margin-bottom:16px}
+.foot-brand p{font-size:12.5px;color:var(--muted);line-height:1.7;font-weight:300;max-width:220px}
+.foot-col h4{font-family:var(--font-m);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.foot-col ul{list-style:none}
+.foot-col ul li{margin-bottom:9px}
+.foot-col ul li a{font-size:12.5px;color:var(--muted);text-decoration:none;transition:color .2s;line-height:1.5}
+.foot-col ul li a:hover{color:var(--text)}
+.foot-bottom{border-top:0.5px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot-legal{display:flex;gap:20px;flex-wrap:wrap}
+.foot-legal a{font-size:10.5px;color:var(--dim);text-decoration:none;font-family:var(--font-m);transition:color .2s;white-space:nowrap}
+.foot-legal a:hover{color:var(--muted)}
+.foot-copy{font-size:10.5px;color:var(--dim);font-family:var(--font-m)}
+@media(max-width:900px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:span 2}}
+@media(max-width:520px){.foot-top{grid-template-columns:1fr}.foot-brand{grid-column:span 1}.foot-bottom{flex-direction:column;align-items:flex-start}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{border-left:none;border-top:0.5px solid var(--border);padding:44px 5vw}
+  .instr-grid{grid-template-columns:repeat(4,1fr)}
+  .sim-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-row{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .instr-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat-item{border-right:none;border-bottom:0.5px solid var(--border)}
+  .fg-row{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo"><img src="data:image/png;base64,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" alt="NAGA"></a>
+  <ul class="nav-links">
+    <li><a href="#mercados">Mercados</a></li>
+    <li><a href="#simulacion">Simulación</a></li>
+    <li><a href="#noticias">Noticias</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#registro" class="nav-cta">Abrir cuenta</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <div class="eyebrow">Plataforma de inversión global</div>
+    <h1 class="hero-title">Los mercados<br>que mueven<br>el <span class="acc">mundo.</span><br>En tus manos.</h1>
+    <p class="hero-sub">Acciones tech, índices, forex, criptos y materias primas. Todo desde una sola cuenta regulada con tecnología de ejecución profesional.</p>
+    <div class="trust-bar">
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Regulado FSA SD026
+      </div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Ejecución en ms
+      </div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        +1M usuarios
+      </div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        950+ instrumentos
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right" id="registro">
+    <div id="formWrap">
+      <div class="form-head">Crea tu cuenta</div>
+      <p class="form-sub-text">Registro gratuito. Sin depósito mínimo para comenzar.</p>
+      <div class="fg-row">
+        <div class="fg"><label>Nombre</label><input type="text" placeholder="Juan" id="fn" autocomplete="given-name"></div>
+        <div class="fg"><label>Apellido</label><input type="text" placeholder="García" id="fa" autocomplete="family-name"></div>
+      </div>
+      <div class="fg"><label>Correo electrónico</label><input type="email" placeholder="juan@email.com" id="fe" autocomplete="email"></div>
+      <div class="fg"><label>Teléfono</label><input type="tel" placeholder="+34 600 000 000" id="ft" autocomplete="tel"></div>
+      <div class="fg">
+        <label>País</label>
+        <select id="fp">
+          <option value="" disabled selected>Selecciona tu país</option>
+          <option>España</option><option>México</option><option>Colombia</option>
+          <option>Argentina</option><option>Chile</option><option>Perú</option>
+          <option>Venezuela</option><option>Ecuador</option><option>Bolivia</option>
+          <option>Paraguay</option><option>Uruguay</option><option>Otro</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Experiencia inversora</label>
+        <select id="fexp">
+          <option value="" disabled selected>Selecciona nivel</option>
+          <option>Sin experiencia</option>
+          <option>Principiante (menos de 1 año)</option>
+          <option>Intermedio (1–3 años)</option>
+          <option>Avanzado (más de 3 años)</option>
+        </select>
+      </div>
+      <button class="btn-submit" onclick="submitForm()">Abrir cuenta gratuita</button>
+      <p class="form-legal">Al registrarte aceptas los Términos y Condiciones y la Política de Privacidad. El trading implica riesgo. Puedes perder parte o todo tu capital.</p>
+    </div>
+    <div class="form-success" id="fs">
+      <div class="check-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Solicitud recibida</h3>
+      <p>Un asesor de NAGA se pondrá en contacto contigo próximamente para completar tu acceso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="tickerTrack">
+    <div class="m-item"><span class="m-sym">NVDA</span><span class="m-price" id="t-nvda">$208.14</span><span class="m-up" id="tc-nvda">+0.81%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">AAPL</span><span class="m-price" id="t-aapl">$312.02</span><span class="m-up" id="tc-aapl">+1.52%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">AMZN</span><span class="m-price" id="t-amzn">$247.10</span><span class="m-up" id="tc-amzn">+0.43%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">TSLA</span><span class="m-price" id="t-tsla">$401.92</span><span class="m-up" id="tc-tsla">+2.79%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">MSFT</span><span class="m-price" id="t-msft">$412.67</span><span class="m-up" id="tc-msft">+1.18%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">META</span><span class="m-price" id="t-meta">$590.46</span><span class="m-dn" id="tc-meta">-0.43%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">NFLX</span><span class="m-price" id="t-nflx">$1,142.30</span><span class="m-up" id="tc-nflx">+0.71%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">GOOGL</span><span class="m-price" id="t-googl">$363.03</span><span class="m-up" id="tc-googl">+0.70%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">BTC/USD</span><span class="m-price">$104,820</span><span class="m-up">+1.8%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">EUR/USD</span><span class="m-price">1.1365</span><span class="m-up">+0.3%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">XAU/USD</span><span class="m-price">$3,294</span><span class="m-dn">-0.2%</span><div class="m-dot"></div></div>
+    <!-- duplicate -->
+    <div class="m-item"><span class="m-sym">NVDA</span><span class="m-price">$208.14</span><span class="m-up">+0.81%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">AAPL</span><span class="m-price">$312.02</span><span class="m-up">+1.52%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">AMZN</span><span class="m-price">$247.10</span><span class="m-up">+0.43%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">TSLA</span><span class="m-price">$401.92</span><span class="m-up">+2.79%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">MSFT</span><span class="m-price">$412.67</span><span class="m-up">+1.18%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">META</span><span class="m-price">$590.46</span><span class="m-dn">-0.43%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">NFLX</span><span class="m-price">$1,142.30</span><span class="m-up">+0.71%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">GOOGL</span><span class="m-price">$363.03</span><span class="m-up">+0.70%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">BTC/USD</span><span class="m-price">$104,820</span><span class="m-up">+1.8%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">EUR/USD</span><span class="m-price">1.1365</span><span class="m-up">+0.3%</span><div class="m-dot"></div></div>
+    <div class="m-item"><span class="m-sym">XAU/USD</span><span class="m-price">$3,294</span><span class="m-dn">-0.2%</span><div class="m-dot"></div></div>
+  </div>
+</div>
+
+<!-- INSTRUMENTS -->
+<section class="section" id="mercados">
+  <div class="sec-label">Mercados disponibles</div>
+  <h2 class="sec-title">8 líderes tecnológicos.<br>Un solo broker.</h2>
+  <div class="price-live-note"><span class="live-dot"></span> Precios de referencia — 9 Jun 2026 · Fuente: Investing.com / Robinhood</div>
+  <div class="instr-grid">
+
+    <!-- NVIDIA -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#76B900">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- NVIDIA eye/triangle mark -->
+          <path d="M30 12C30 12 18 17 14 26C14 26 20 22 30 22V12Z" fill="white"/>
+          <path d="M30 22C30 22 40 22 44 30C44 30 40 38 30 38V22Z" fill="white" opacity="0.7"/>
+          <path d="M30 38C30 38 20 38 16 30C16 30 18 26 22 24C22 24 20 28 30 30V38Z" fill="white" opacity="0.45"/>
+          <path d="M30 12V38" stroke="white" stroke-width="0.5" opacity="0.3"/>
+          <!-- NVIDIA wordmark N -->
+          <text x="30" y="53" text-anchor="middle" font-size="9" font-weight="900" fill="white" font-family="Arial Black,sans-serif" letter-spacing="0.5">NVIDIA</text>
+        </svg>
+      </div>
+      <div class="instr-name">NVIDIA</div>
+      <div class="instr-ticker">NVDA · NASDAQ</div>
+      <div class="instr-price">$208.14</div>
+      <div class="instr-chg up">+0.81%</div>
+    </div>
+
+    <!-- APPLE -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#1C1C1E">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Apple logo accurate silhouette -->
+          <path d="M38.5 31.2c-.05-4.1 3.35-6.1 3.5-6.2-1.9-2.8-4.9-3.2-5.95-3.25-2.55-.25-4.95 1.5-6.25 1.5-1.25 0-3.2-1.45-5.25-1.4-2.7.05-5.2 1.55-6.6 3.95-2.8 4.85-.75 12.05 2.05 15.95 1.35 1.95 2.95 4.15 5.1 4.05 2.05-.1 2.8-1.3 5.25-1.3 2.45 0 3.15 1.3 5.3 1.25 2.2-.05 3.6-2 4.95-3.95 1-1.45 1.75-3 2.2-4.6-5.2-2-5.3-7.95-5.3-7.95z" fill="white"/>
+          <path d="M34.3 18.8c1.1-1.4 1.85-3.35 1.65-5.3-1.6.1-3.55 1.1-4.7 2.45-1.05 1.2-1.95 3.15-1.7 4.95 1.75.15 3.6-.85 4.75-2.1z" fill="white"/>
+        </svg>
+      </div>
+      <div class="instr-name">Apple</div>
+      <div class="instr-ticker">AAPL · NASDAQ</div>
+      <div class="instr-price">$312.02</div>
+      <div class="instr-chg up">+1.52%</div>
+    </div>
+
+    <!-- AMAZON -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#131921">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Amazon lowercase a + smile arrow -->
+          <text x="30" y="34" text-anchor="middle" font-size="28" font-weight="900" fill="white" font-family="Georgia,Times New Roman,serif">a</text>
+          <path d="M16 44C22 48.5 38 48.5 44 44" stroke="#FF9900" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+          <path d="M41.5 41.5L44 44L41.5 46" stroke="#FF9900" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="instr-name">Amazon</div>
+      <div class="instr-ticker">AMZN · NASDAQ</div>
+      <div class="instr-price">$247.10</div>
+      <div class="instr-chg up">+0.43%</div>
+    </div>
+
+    <!-- TESLA -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#CC0000">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tesla T with authentic top curls -->
+          <path d="M30 22V48" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M18 22H42" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Curl detail top-left and top-right -->
+          <path d="M18 22C18 22 15.5 18 12 17C15 17 22 17.5 30 17.5C38 17.5 45 17 48 17C44.5 18 42 22 42 22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="instr-name">Tesla</div>
+      <div class="instr-ticker">TSLA · NASDAQ</div>
+      <div class="instr-price">$401.92</div>
+      <div class="instr-chg up">+2.79%</div>
+    </div>
+
+    <!-- MICROSOFT -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#1a1a1a">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Microsoft 4-square flag — exact brand colors -->
+          <rect x="13" y="13" width="15" height="15" fill="#F25022"/>
+          <rect x="32" y="13" width="15" height="15" fill="#7FBA00"/>
+          <rect x="13" y="32" width="15" height="15" fill="#00A4EF"/>
+          <rect x="32" y="32" width="15" height="15" fill="#FFB900"/>
+        </svg>
+      </div>
+      <div class="instr-name">Microsoft</div>
+      <div class="instr-ticker">MSFT · NASDAQ</div>
+      <div class="instr-price">$412.67</div>
+      <div class="instr-chg up">+1.18%</div>
+    </div>
+
+    <!-- META -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#0A0A0A">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Meta infinity loop — official shape -->
+          <defs>
+            <linearGradient id="mg" x1="10" y1="30" x2="50" y2="30" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0082FB"/>
+              <stop offset="50%" stop-color="#0094FF"/>
+              <stop offset="100%" stop-color="#00B2FF"/>
+            </linearGradient>
+          </defs>
+          <path d="M10 30c0-5.5 3.5-10 8-10 2.8 0 5 1.8 8 6.5 3-4.7 5.2-6.5 8-6.5 4.5 0 8 4.5 8 10s-3.5 10-8 10c-2.8 0-5-1.8-8-6.5C23 38.2 20.8 40 18 40c-4.5 0-8-4.5-8-10z" stroke="url(#mg)" stroke-width="3.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="instr-name">Meta</div>
+      <div class="instr-ticker">META · NASDAQ</div>
+      <div class="instr-price">$590.46</div>
+      <div class="instr-chg dn">-0.43%</div>
+    </div>
+
+    <!-- NETFLIX -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#141414">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Netflix N — official ribbon shape -->
+          <path d="M19 10H25.5L30 28V10H36.5V50H30L25.5 32V50H19V10Z" fill="#E50914"/>
+          <!-- Shadow strip in center for depth -->
+          <path d="M25.5 10L30 28L30 10H25.5Z" fill="#B20710" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="instr-name">Netflix</div>
+      <div class="instr-ticker">NFLX · NASDAQ</div>
+      <div class="instr-price">$1,142.30</div>
+      <div class="instr-chg up">+0.71%</div>
+    </div>
+
+    <!-- GOOGLE / ALPHABET -->
+    <div class="instr-card">
+      <div class="instr-logo" style="background:#fff">
+        <svg viewBox="0 0 60 60" width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Google "G" official colored -->
+          <path d="M46 30.3c0-1.1-.1-2.2-.3-3.3H30v6.2h8.9c-.4 2-1.5 3.7-3.2 4.9v4h5.2C43.8 39.3 46 35.2 46 30.3z" fill="#4285F4"/>
+          <path d="M30 47c4.5 0 8.2-1.5 11-4l-5.2-4c-1.5 1-3.4 1.6-5.8 1.6-4.4 0-8.2-3-9.6-7H15v4.1C17.8 43.9 23.6 47 30 47z" fill="#34A853"/>
+          <path d="M20.4 33.6c-.3-1-.5-2-.5-3.1s.2-2.1.5-3.1v-4.1H15C13.7 25.8 13 27.8 13 30s.7 4.2 2 5.7l5.4-2.1z" fill="#FBBC05"/>
+          <path d="M30 19.9c2.5 0 4.7.9 6.5 2.5l4.8-4.8C38.2 14.9 34.4 13 30 13c-6.4 0-12.2 3.1-15 8l5.4 4.1c1.4-4 5.2-7.2 9.6-7.2z" fill="#EA4335"/>
+          <rect x="29" y="29" width="13" height="2.5" fill="#4285F4"/>
+        </svg>
+      </div>
+      <div class="instr-name">Alphabet</div>
+      <div class="instr-ticker">GOOGL · NASDAQ</div>
+      <div class="instr-price">$363.03</div>
+      <div class="instr-chg up">+0.70%</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">1<em>M</em>+</div><div class="stat-lbl">Usuarios globales</div></div>
+  <div class="stat-item"><div class="stat-num">950<em>+</em></div><div class="stat-lbl">Instrumentos</div></div>
+  <div class="stat-item"><div class="stat-num"><em>$</em>0</div><div class="stat-lbl">Comisión apertura</div></div>
+  <div class="stat-item"><div class="stat-num">24<em>/5</em></div><div class="stat-lbl">Mercados activos</div></div>
+</div>
+
+<!-- SIMULATION -->
+<section class="sim-section" id="simulacion">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="sec-label">Simulación histórica</div>
+    <h2 class="sec-title">Si hubieras invertido<br>$1,000 hace 5 años…</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:36px;font-weight:300;max-width:560px">Basado en precios de cierre del 1 de enero de 2021 vs. precio actual (Jun 2026). Solo referencial. Los rendimientos pasados no garantizan resultados futuros.</p>
+    <div class="sim-grid">
+
+      <div class="sim-card">
+        <div class="sim-stock-name">NVIDIA · NVDA</div>
+        <div class="sim-headline">De $13.50 a $208.14 por acción</div>
+        <div class="sim-invested">$1,000 invertidos en Ene 2021</div>
+        <div class="sim-result">$15,418</div>
+        <div class="sim-pct">+1,441%</div>
+        <div class="sim-bar"><div class="sim-bar-fill" style="width:100%"></div></div>
+      </div>
+
+      <div class="sim-card">
+        <div class="sim-stock-name">META · META</div>
+        <div class="sim-headline">De $265 a $590.46 por acción</div>
+        <div class="sim-invested">$1,000 invertidos en Ene 2021</div>
+        <div class="sim-result">$2,228</div>
+        <div class="sim-pct">+122.8%</div>
+        <div class="sim-bar"><div class="sim-bar-fill" style="width:14%"></div></div>
+      </div>
+
+      <div class="sim-card">
+        <div class="sim-stock-name">APPLE · AAPL</div>
+        <div class="sim-headline">De $125.10 a $312.02 por acción</div>
+        <div class="sim-invested">$1,000 invertidos en Ene 2021</div>
+        <div class="sim-result">$2,494</div>
+        <div class="sim-pct">+149.4%</div>
+        <div class="sim-bar"><div class="sim-bar-fill" style="width:16%"></div></div>
+      </div>
+
+      <div class="sim-card">
+        <div class="sim-stock-name">AMAZON · AMZN</div>
+        <div class="sim-headline">De $163 a $247.10 por acción</div>
+        <div class="sim-invested">$1,000 invertidos en Ene 2021</div>
+        <div class="sim-result">$1,516</div>
+        <div class="sim-pct">+51.6%</div>
+        <div class="sim-bar"><div class="sim-bar-fill" style="width:10%"></div></div>
+      </div>
+
+      <div class="sim-card">
+        <div class="sim-stock-name">MICROSOFT · MSFT</div>
+        <div class="sim-headline">De $222 a $412.67 por acción</div>
+        <div class="sim-invested">$1,000 invertidos en Ene 2021</div>
+        <div class="sim-result">$1,858</div>
+        <div class="sim-pct">+85.8%</div>
+        <div class="sim-bar"><div class="sim-bar-fill" style="width:12%"></div></div>
+      </div>
+
+      <div class="sim-card">
+        <div class="sim-stock-name">ALPHABET · GOOGL</div>
+        <div class="sim-headline">De $86 a $363.03 por acción</div>
+        <div class="sim-invested">$1,000 invertidos en Ene 2021</div>
+        <div class="sim-result">$4,221</div>
+        <div class="sim-pct">+322.1%</div>
+        <div class="sim-bar"><div class="sim-bar-fill" style="width:27%"></div></div>
+      </div>
+
+    </div>
+    <div class="sim-cta">
+      <p>Hoy puedes empezar con el capital que prefieras. Sin mínimos, sin comisiones de apertura.</p>
+      <a href="#registro" class="btn-lg">Empieza a invertir ahora</a>
+      <p class="sim-note">Invertir implica riesgos. Los rendimientos pasados no garantizan resultados futuros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="sec-label">Por qué NAGA</div>
+  <h2 class="sec-title">Opera con ventaja.</h2>
+  <div class="feat-grid">
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+      <div class="feat-title">Rentabilidad histórica</div>
+      <p class="feat-desc">Accede a las Big Caps con mayor retorno de los últimos 5 años. Datos reales y actualizados.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <div class="feat-title">Ejecución instantánea</div>
+      <p class="feat-desc">Órdenes procesadas en milisegundos. Tecnología de nivel institucional para inversores retail.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="feat-title">Regulado y seguro</div>
+      <p class="feat-desc">Autorizado por la FSA de Seychelles (SD026). Capital protegido bajo supervisión regulatoria.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="feat-title">Plataforma social</div>
+      <p class="feat-desc">Copia las operaciones de los mejores traders con Auto-Copy. Aprende mientras inviertes.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+      <div class="feat-title">App y web</div>
+      <p class="feat-desc">Opera desde móvil, tablet o escritorio. La misma experiencia profesional en todos tus dispositivos.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="feat-title">CFDs y acciones reales</div>
+      <p class="feat-desc">Elige entre apalancamiento vía CFDs o compra de acciones reales. Sin comisión de apertura.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="feat-title">Mercados globales</div>
+      <p class="feat-desc">Accede a acciones, índices, forex, criptos y materias primas desde una sola cuenta unificada.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E8221A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="feat-title">Análisis avanzado</div>
+      <p class="feat-desc">Gráficos profesionales con 70+ indicadores técnicos. Decisiones basadas en datos precisos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="padding-top:0">
+  <div class="sec-label">Cómo funciona</div>
+  <h2 class="sec-title">Tres pasos hacia<br>tu primera operación.</h2>
+  <div class="steps-row">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Crea tu cuenta gratuita</div>
+      <p class="step-desc">Regístrate en menos de 2 minutos con solo tu correo y datos básicos. Sin depósito mínimo para comenzar a explorar la plataforma en modo demo.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Verifica tu identidad</div>
+      <p class="step-desc">Proceso rápido y seguro. Sube tu documento de identidad y comprobante de domicilio. Aprobación habitual en menos de 24 horas.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Deposita y opera</div>
+      <p class="step-desc">Fondea con tarjeta, transferencia o cripto. Elige tu acción, establece tu posición y ejecuta tu primera operación en tiempo real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section" id="noticias" style="background:var(--surface);padding-top:80px;padding-bottom:80px">
+  <div class="sec-label">Noticias del mercado</div>
+  <h2 class="sec-title">Lo más relevante<br>esta semana.</h2>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <div class="news-tag"><span class="live-dot" style="width:6px;height:6px"></span>NVIDIA</div>
+      <div class="news-title">Jensen Huang: "La robótica será el próximo gran sector de crecimiento"</div>
+      <div class="news-excerpt">El CEO de NVIDIA visitó Corea del Sur para reunirse con Hyundai, Samsung y LG. Declaró que la IA física transformará la manufactura global en los próximos años.</div>
+      <div class="news-meta"><span>TheStreet</span><span class="news-source">5 Jun 2026</span></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-tag"><span class="live-dot" style="width:6px;height:6px"></span>BIG TECH</div>
+      <div class="news-title">Las Magnificent 7 lideran un rally del 13% en 4 semanas</div>
+      <div class="news-excerpt">Alphabet, Amazon, NVIDIA y Meta acumulan más del 25% de subida desde que el S&P 500 tocó mínimos el 30 de marzo. El gasto en IA supera los $649B proyectados para 2026.</div>
+      <div class="news-meta"><span>Bloomberg / Yahoo Finance</span><span class="news-source">26 Abr 2026</span></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-tag"><span class="live-dot" style="width:6px;height:6px"></span>MERCADOS</div>
+      <div class="news-title">NVIDIA lidera el ranking de mayor capitalización bursátil del mundo</div>
+      <div class="news-excerpt">Con una capitalización de $4.97 billones, NVIDIA supera a Apple y Alphabet para convertirse en la empresa más valiosa del planeta impulsada por la demanda de chips de IA.</div>
+      <div class="news-meta"><span>Motley Fool</span><span class="news-source">3 Jun 2026</span></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-tag"><span class="live-dot" style="width:6px;height:6px"></span>META</div>
+      <div class="news-title">Meta estudia emisión de acciones por varios miles de millones para financiar su expansión en IA</div>
+      <div class="news-excerpt">Meta Platforms evalúa una operación de capital que le permita acelerar la construcción de infraestructura de IA, según fuentes cercanas a la operación.</div>
+      <div class="news-meta"><span>Motley Fool</span><span class="news-source">9 Jun 2026</span></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-tag"><span class="live-dot" style="width:6px;height:6px"></span>TESLA</div>
+      <div class="news-title">Tesla sube más de un 4% en la jornada de hoy impulsada por datos de producción</div>
+      <div class="news-excerpt">Las acciones de Tesla registran un avance del 4.62% en la sesión del 9 de junio. Los inversores reaccionan positivamente a nuevas proyecciones de entregas para el Q3 2026.</div>
+      <div class="news-meta"><span>Robinhood Markets</span><span class="news-source">9 Jun 2026</span></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-tag"><span class="live-dot" style="width:6px;height:6px"></span>ANÁLISIS</div>
+      <div class="news-title">Meta y Amazon: los mejor posicionados del grupo Magnificent 7 para 2026</div>
+      <div class="news-excerpt">Según Zacks Investment Research, Meta cotiza a 21.9x beneficios futuros y Amazon a 30.7x, ambos por debajo de sus medianas históricas. Señal de oportunidad según analistas.</div>
+      <div class="news-meta"><span>Zacks / Nasdaq</span><span class="news-source">8 Ene 2026</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonios">
+  <div class="sec-label">Testimonios</div>
+  <h2 class="sec-title">Lo que dicen<br>nuestros inversores.</h2>
+  <div class="testi-grid">
+
+    <div class="testi-card">
+      <div class="stars">
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="testi-text">"Llevaba años queriendo invertir en NVIDIA pero no sabía cómo. Con NAGA fue increíblemente sencillo. En 10 minutos tenía mi cuenta activa y mi primera posición abierta."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">C</div>
+        <div>
+          <div class="testi-name">Carlos M.</div>
+          <div class="testi-loc">Madrid, España · Inversor desde 2023</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="testi-text">"La función de Auto-Copy cambió mi manera de invertir. Copio a traders experimentados y mientras tanto aprendo las estrategias. Mi portafolio lleva 14 meses en positivo."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">L</div>
+        <div>
+          <div class="testi-name">Laura P.</div>
+          <div class="testi-loc">Ciudad de México · Inversora desde 2022</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="#E8221A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="testi-text">"Invertí en Apple y Microsoft desde el principio gracias a NAGA. La plataforma es limpia, rápida y los gráficos profesionales. Para mí es la mejor opción disponible en LATAM."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Andrés V.</div>
+          <div class="testi-loc">Bogotá, Colombia · Inversor desde 2021</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:var(--surface)">
+  <div class="sec-label">Preguntas frecuentes</div>
+  <h2 class="sec-title" style="text-align:center">Resolvemos tus dudas.</h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Necesito experiencia previa para invertir en NAGA?</span>
+        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+      <div class="faq-a"><p>No es necesario. NAGA está diseñado para todos los niveles. Puedes empezar con una cuenta demo sin dinero real para familiarizarte con la plataforma, y activar Auto-Copy para copiar a traders experimentados mientras aprendes.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Cuál es el depósito mínimo para comenzar a operar?</span>
+        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+      <div class="faq-a"><p>No existe depósito mínimo para abrir tu cuenta y explorar la plataforma en modo demo. Para operar con fondos reales, el depósito recomendado inicial es de $250 USD o equivalente en tu moneda local.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Puedo comprar acciones reales de NVIDIA, Apple o Tesla?</span>
+        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+      <div class="faq-a"><p>Sí. NAGA ofrece tanto CFDs sobre acciones (con apalancamiento) como la compra de acciones reales (Real Stocks) sin comisión de apertura. Con las acciones reales eres propietario del activo directamente.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Es seguro depositar dinero en NAGA?</span>
+        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+      <div class="faq-a"><p>NAGA.com Ltd está autorizada y regulada por la Autoridad de Servicios Financieros de Seychelles (FSA) con licencia SD026. Los fondos de clientes se mantienen en cuentas segregadas, separados de los fondos operativos de la empresa.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Qué métodos de pago acepta NAGA?</span>
+        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+      <div class="faq-a"><p>NAGA acepta tarjetas de crédito/débito (Visa, Mastercard), transferencias bancarias y criptomonedas para depósitos y retiradas. El procesamiento habitual es inmediato para tarjetas y hasta 3 días hábiles para transferencias.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Qué diferencia hay entre un CFD y una acción real?</span>
+        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+      <div class="faq-a"><p>Un CFD (Contrato por Diferencia) te permite especular sobre el precio de un activo sin ser propietario del mismo, con la posibilidad de usar apalancamiento. Una acción real implica ser propietario del activo, sin apalancamiento pero con todos los derechos del accionista. Los CFDs implican mayor riesgo.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <div class="sec-label">Comienza hoy</div>
+  <h2 class="sec-title">El mercado no espera.<br>Tú tampoco deberías.</h2>
+  <p class="cta-sub">Más de 1 millón de inversores ya operan con NAGA. Únete y accede a los mejores mercados del mundo.</p>
+  <a href="#registro" class="btn-lg">Abre tu cuenta ahora</a>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <p>Advertencia de riesgo: Los CFDs son instrumentos complejos y conllevan un alto riesgo de perder dinero rápidamente debido al apalancamiento. Entre el 74.6% y el 80.85% de las cuentas de inversores minoristas pierden dinero al operar con CFDs con este proveedor. Debe considerar si comprende cómo funcionan los CFDs y si puede permitirse asumir el alto riesgo de perder su dinero. Los rendimientos pasados no garantizan resultados futuros. La simulación histórica mostrada es solo ilustrativa y no constituye asesoramiento financiero ni promesa de rendimiento. NAGA.com Ltd está autorizada y regulada por la Autoridad de Servicios Financieros de Seychelles (FSA) con el número de licencia SD026. Los precios mostrados son de referencia y pueden variar.</p>
+</div>
+
+<!-- FOOTER -->
+<!-- LEGAL MODALS -->
+<div id="modal-terms" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background:rgba(0,0,0,0.88);overflow-y:auto;padding:40px 5vw">
+  <div style="max-width:760px;margin:0 auto;background:#161616;border:0.5px solid rgba(255,255,255,0.1);border-radius:14px;padding:48px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px">
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.5px">Términos y Condiciones</h2>
+      <button onclick="closeModal('modal-terms')" style="background:none;border:none;color:rgba(239,239,232,0.5);font-size:22px;cursor:pointer;padding:4px 10px;border-radius:4px;line-height:1">&#x2715;</button>
+    </div>
+    <p style="font-size:11px;color:rgba(239,239,232,0.35);font-family:'DM Mono',monospace;margin-bottom:24px;letter-spacing:1px">Última actualización: Junio 2026</p>
+    <div style="font-size:13.5px;color:rgba(239,239,232,0.6);line-height:1.8;font-weight:300">
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">1. Aceptación de los Términos</strong><br>Al acceder y utilizar los servicios de NAGA.com Ltd ("NAGA"), usted acepta quedar vinculado por los presentes Términos y Condiciones. Si no está de acuerdo con alguna parte de estos términos, no deberá utilizar nuestros servicios.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">2. Descripción del Servicio</strong><br>NAGA es una plataforma de inversión y trading que permite a los usuarios operar con CFDs, acciones reales, forex, criptomonedas e índices. NAGA.com Ltd está autorizada y regulada por la Autoridad de Servicios Financieros de Seychelles (FSA) con número de licencia SD026.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">3. Advertencia de Riesgo</strong><br>Los CFDs son instrumentos complejos y conllevan un alto riesgo de perder dinero rápidamente. Entre el 74.6% y el 80.85% de los inversores minoristas pierden dinero al operar CFDs con este proveedor. Asegúrese de comprender cómo funcionan los CFDs y si puede permitirse asumir el alto riesgo de perder su dinero.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">4. Elegibilidad</strong><br>Para utilizar los servicios de NAGA debe ser mayor de 18 años, residente en un país donde los servicios estén disponibles y tener capacidad legal para celebrar contratos vinculantes.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">5. Fondos del Cliente</strong><br>Los fondos depositados se mantienen en cuentas bancarias segregadas, separados de los fondos operativos de NAGA. Esto proporciona protección adicional a los clientes.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">6. Modificaciones</strong><br>NAGA se reserva el derecho de modificar estos Términos en cualquier momento. Los cambios serán comunicados a los usuarios registrados con al menos 30 días de antelación.</p>
+      <p><strong style="color:#EFEFE8;font-weight:600">7. Ley Aplicable</strong><br>Estos Términos se rigen por la legislación de las Islas Seychelles. Cualquier disputa será sometida a la jurisdicción exclusiva de los tribunales de Seychelles.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-privacy" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background:rgba(0,0,0,0.88);overflow-y:auto;padding:40px 5vw">
+  <div style="max-width:760px;margin:0 auto;background:#161616;border:0.5px solid rgba(255,255,255,0.1);border-radius:14px;padding:48px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px">
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.5px">Política de Privacidad</h2>
+      <button onclick="closeModal('modal-privacy')" style="background:none;border:none;color:rgba(239,239,232,0.5);font-size:22px;cursor:pointer;padding:4px 10px;border-radius:4px;line-height:1">&#x2715;</button>
+    </div>
+    <p style="font-size:11px;color:rgba(239,239,232,0.35);font-family:'DM Mono',monospace;margin-bottom:24px;letter-spacing:1px">Última actualización: Junio 2026</p>
+    <div style="font-size:13.5px;color:rgba(239,239,232,0.6);line-height:1.8;font-weight:300">
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">1. Responsable del Tratamiento</strong><br>NAGA.com Ltd, con domicilio en Victoria, Mahé, Seychelles, es el responsable del tratamiento de sus datos personales en el marco del uso de nuestros servicios.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">2. Datos que Recopilamos</strong><br>Recopilamos datos de identificación (nombre, dirección, DNI/pasaporte), datos de contacto (email, teléfono), datos financieros (historial de transacciones, información bancaria) y datos de uso de la plataforma (actividad, operaciones).</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">3. Finalidad del Tratamiento</strong><br>Sus datos son utilizados para: gestión de su cuenta y prestación de servicios, cumplimiento de obligaciones legales y regulatorias (KYC/AML), comunicaciones sobre su cuenta y servicios relacionados, y mejora de nuestra plataforma.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">4. Base Legal</strong><br>El tratamiento se basa en la ejecución del contrato de prestación de servicios, el cumplimiento de obligaciones legales y, en algunos casos, el consentimiento explícito del usuario.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">5. Conservación de Datos</strong><br>Sus datos serán conservados durante la vigencia de la relación contractual y durante los plazos exigidos por la normativa aplicable, generalmente no menos de 5 años tras el cierre de la cuenta.</p>
+      <p><strong style="color:#EFEFE8;font-weight:600">6. Sus Derechos</strong><br>Tiene derecho a acceder, rectificar, suprimir, portabilidad y oposición al tratamiento de sus datos. Para ejercer estos derechos, contacte con: privacy@naga.com</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-legal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background:rgba(0,0,0,0.88);overflow-y:auto;padding:40px 5vw">
+  <div style="max-width:760px;margin:0 auto;background:#161616;border:0.5px solid rgba(255,255,255,0.1);border-radius:14px;padding:48px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px">
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.5px">Aviso Legal</h2>
+      <button onclick="closeModal('modal-legal')" style="background:none;border:none;color:rgba(239,239,232,0.5);font-size:22px;cursor:pointer;padding:4px 10px;border-radius:4px;line-height:1">&#x2715;</button>
+    </div>
+    <p style="font-size:11px;color:rgba(239,239,232,0.35);font-family:'DM Mono',monospace;margin-bottom:24px;letter-spacing:1px">Última actualización: Junio 2026</p>
+    <div style="font-size:13.5px;color:rgba(239,239,232,0.6);line-height:1.8;font-weight:300">
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">Información de la Empresa</strong><br>NAGA.com Ltd es una sociedad constituida en las Islas Seychelles, autorizada y regulada por la Financial Services Authority (FSA) de Seychelles con número de licencia SD026.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">Advertencia Regulatoria</strong><br>Los CFDs son productos complejos con apalancamiento. El trading conlleva riesgo significativo de pérdida. No es adecuado para todos los inversores. Asegúrese de comprender los riesgos antes de operar.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">Información No Constituye Asesoramiento</strong><br>El contenido de esta página web es únicamente informativo y no constituye asesoramiento financiero, de inversión, legal, fiscal ni de ningún otro tipo. Los rendimientos históricos mostrados no garantizan resultados futuros.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">Propiedad Intelectual</strong><br>Todos los contenidos de esta web (textos, logos, imágenes, diseño) son propiedad de NAGA.com Ltd o de sus licenciantes. Los logos de terceras empresas (NVIDIA, Apple, Amazon, etc.) son propiedad de sus respectivos titulares y se utilizan únicamente con fines ilustrativos.</p>
+      <p><strong style="color:#EFEFE8;font-weight:600">Limitación de Responsabilidad</strong><br>NAGA no será responsable de las pérdidas o daños derivados del uso o la imposibilidad de usar los servicios, incluidas las pérdidas por operaciones de trading.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-cookies" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background:rgba(0,0,0,0.88);overflow-y:auto;padding:40px 5vw">
+  <div style="max-width:760px;margin:0 auto;background:#161616;border:0.5px solid rgba(255,255,255,0.1);border-radius:14px;padding:48px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px">
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.5px">Política de Cookies</h2>
+      <button onclick="closeModal('modal-cookies')" style="background:none;border:none;color:rgba(239,239,232,0.5);font-size:22px;cursor:pointer;padding:4px 10px;border-radius:4px;line-height:1">&#x2715;</button>
+    </div>
+    <p style="font-size:11px;color:rgba(239,239,232,0.35);font-family:'DM Mono',monospace;margin-bottom:24px;letter-spacing:1px">Última actualización: Junio 2026</p>
+    <div style="font-size:13.5px;color:rgba(239,239,232,0.6);line-height:1.8;font-weight:300">
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">¿Qué son las Cookies?</strong><br>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita nuestra web. Nos permiten reconocerle, recordar sus preferencias y mejorar su experiencia de usuario.</p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">Tipos de Cookies que Utilizamos</strong><br>
+        <strong style="color:rgba(239,239,232,0.85)">Esenciales:</strong> Necesarias para el funcionamiento básico de la web y la plataforma de trading. No pueden desactivarse.<br><br>
+        <strong style="color:rgba(239,239,232,0.85)">Analíticas:</strong> Nos ayudan a entender cómo los usuarios interactúan con nuestra web (Google Analytics). Pueden desactivarse sin afectar la funcionalidad.<br><br>
+        <strong style="color:rgba(239,239,232,0.85)">Marketing:</strong> Utilizadas para mostrar publicidad relevante en redes sociales y otras plataformas. Requieren su consentimiento explícito.
+      </p>
+      <p style="margin-bottom:16px"><strong style="color:#EFEFE8;font-weight:600">Gestión de Cookies</strong><br>Puede gestionar o desactivar las cookies desde la configuración de su navegador. Tenga en cuenta que desactivar ciertas cookies puede afectar la funcionalidad de la plataforma.</p>
+      <p><strong style="color:#EFEFE8;font-weight:600">Contacto</strong><br>Para consultas sobre nuestra política de cookies, contacte con: privacy@naga.com</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <img src="data:image/png;base64,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" alt="NAGA">
+      <p>La plataforma de inversión global. Opera acciones, forex, criptos e índices desde una sola cuenta regulada.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Plataforma</h4>
+      <ul>
+        <li><a href="#mercados">Mercados</a></li>
+        <li><a href="#simulacion">Simulación histórica</a></li>
+        <li><a href="#noticias">Noticias</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+        <li><a href="#registro">Abrir cuenta</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Instrumentos</h4>
+      <ul>
+        <li><a href="#mercados">Acciones Tech</a></li>
+        <li><a href="#mercados">Índices globales</a></li>
+        <li><a href="#mercados">Forex</a></li>
+        <li><a href="#mercados">Criptomonedas</a></li>
+        <li><a href="#mercados">Materias primas</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#" onclick="openModal('modal-terms');return false">Términos y Condiciones</a></li>
+        <li><a href="#" onclick="openModal('modal-privacy');return false">Política de Privacidad</a></li>
+        <li><a href="#" onclick="openModal('modal-legal');return false">Aviso Legal</a></li>
+        <li><a href="#" onclick="openModal('modal-cookies');return false">Política de Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-legal">
+      <a href="#" onclick="openModal('modal-terms');return false">Términos y Condiciones</a>
+      <a href="#" onclick="openModal('modal-privacy');return false">Política de Privacidad</a>
+      <a href="#" onclick="openModal('modal-legal');return false">Aviso Legal</a>
+      <a href="#" onclick="openModal('modal-cookies');return false">Política de Cookies</a>
+    </div>
+    <p class="foot-copy">© 2026 NAGA.com Ltd · Regulado por FSA Seychelles (SD026)</p>
+  </div>
+</footer>
+
+<script>
+function submitForm(){
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  const p=document.getElementById('fp').value;
+  if(!n||!e||!p){
+    ['fn','fe','fp'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(!el.value.trim()){el.style.borderColor='#E8221A';setTimeout(()=>el.style.borderColor='',2200)}
+    });return;
+  }
+  document.getElementById('formWrap').style.display='none';
+  document.getElementById('fs').style.display='block';
+}
+function toggleFaq(el){
+  const ans=el.nextElementSibling;
+  const icon=el.querySelector('.faq-icon');
+  const isOpen=ans.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(a=>{a.classList.remove('open')});
+  document.querySelectorAll('.faq-icon.open').forEach(i=>{i.classList.remove('open')});
+  if(!isOpen){ans.classList.add('open');icon.classList.add('open')}
+}
+// Simulate micro price movements
+function jitter(){
+  const stocks={
+    'nvda':{p:208.14,c:'+0.81%'},
+    'aapl':{p:312.02,c:'+1.52%'},
+    'amzn':{p:247.10,c:'+0.43%'},
+    'tsla':{p:401.92,c:'+2.79%'},
+    'msft':{p:412.67,c:'+1.18%'},
+    'meta':{p:590.46,c:'-0.43%'},
+    'nflx':{p:1142.30,c:'+0.71%'},
+    'googl':{p:363.03,c:'+0.70%'}
+  };
+  Object.entries(stocks).forEach(([k,v])=>{
+    const pe=document.getElementById('t-'+k);
+    if(pe){
+      const delta=(Math.random()-.5)*0.15;
+      const np=(v.p+delta).toFixed(2);
+      pe.textContent='$'+parseFloat(np).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    }
+  });
+}
+setInterval(jitter,4000);
+
+function openModal(id){
+  document.getElementById(id).style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeModal(id){
+  document.getElementById(id).style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('click',function(e){
+  ['modal-terms','modal-privacy','modal-legal','modal-cookies'].forEach(function(id){
+    const m=document.getElementById(id);
+    if(e.target===m){closeModal(id);}
+  });
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){['modal-terms','modal-privacy','modal-legal','modal-cookies'].forEach(closeModal);}
+});
+</script>
+</body>
+</html>
